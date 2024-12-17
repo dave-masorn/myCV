@@ -1,21 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelectorAll('.nav-link');
+  const navButtons = document.querySelectorAll('.nav-button');
   const pages = document.querySelectorAll('.page');
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault();
+  navButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      navButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
 
-      // Remove active class from all links
-      navLinks.forEach(nav => nav.classList.remove('active'));
-      link.classList.add('active');
-
-      // Show the relevant page
-      const targetId = link.getAttribute('href').substring(1);
+      // Show the relevant page with e-ink refresh effect
+      const targetId = button.getAttribute('data-target');
       pages.forEach(page => {
-        page.classList.remove('active');
         if (page.id === targetId) {
-          page.classList.add('active');
+          page.classList.add('refresh-effect');
+          setTimeout(() => {
+            page.classList.remove('refresh-effect');
+            pages.forEach(p => p.classList.remove('active'));
+            page.classList.add('active');
+          }, 300); // Duration of the refresh effect
         }
       });
     });
