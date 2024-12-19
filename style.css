@@ -1,77 +1,80 @@
-/* E-Ink Display Style */
-:root {
-    --background-color: #F8F9FA;
-    --text-color: #212529;
-    --border-color: #CED4DA;
-    --button-bg: #343A40;
-    --button-hover-bg: #212529;
-    --button-text: #F8F9FA;
-    --highlight-bg: #DEE2E6;
-}
-
-/* Basic Reset */
-body {
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    font-family: Georgia, serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Body Styling */
+body {
+    background-color: #f8f9fa;
+    color: #212529;
     line-height: 1.6;
+    padding: 20px;
 }
 
 /* Header Styling */
 header {
-    padding: 1rem;
-    background-color: var(--highlight-bg);
-    border-bottom: 2px solid var(--border-color);
     text-align: center;
+    background-color: #e9ecef;
+    padding: 20px;
+    border-bottom: 2px solid #adb5bd;
 }
 
 header h1 {
-    margin: 0;
     font-size: 2rem;
+    margin-bottom: 10px;
 }
 
-/* Navigation Buttons */
-nav {
-    margin-top: 1rem;
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-.nav-button {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
-    background-color: var(--button-bg);
-    color: var(--button-text);
+nav a {
     text-decoration: none;
+    color: #495057;
+    background-color: #dee2e6;
+    padding: 10px 20px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
-.nav-button:hover {
-    background-color: var(--button-hover-bg);
+nav a:hover,
+nav a.active {
+    background-color: #adb5bd;
+    color: #212529;
 }
 
-/* Main Content Sections */
+/* Main Content */
 main {
-    padding: 2rem;
+    padding: 20px;
     max-width: 800px;
-    margin: auto;
+    margin: 20px auto;
 }
 
-section {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background-color: var(--highlight-bg);
-    border: 1px solid var(--border-color);
+.section {
+    display: none;
+    padding: 20px;
+    background-color: #e9ecef;
+    border: 1px solid #adb5bd;
     border-radius: 4px;
+}
+
+.section.active {
+    display: block;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 1rem;
-    background-color: var(--highlight-bg);
-    border-top: 2px solid var(--border-color);
-    margin-top: 2rem;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-top: 2px solid #adb5bd;
+    color: #495057;
 }
