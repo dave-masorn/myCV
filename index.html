@@ -1,58 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My CV</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Ink CV</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
     <header>
-      <h1>My CV</h1>
-      <nav>
-        <ul>
-          <li><button class="nav-button active" data-target="home">Home</button></li>
-          <li><button class="nav-button" data-target="education">Education</button></li>
-          <li><button class="nav-button" data-target="certification">Certification</button></li>
-          <li><button class="nav-button" data-target="accomplishment">Accomplishment</button></li>
-        </ul>
-      </nav>
+        <h1>E-Ink Portfolio</h1>
+        <nav>
+            <a href="#home" class="nav-button">Home</a>
+            <a href="#education" class="nav-button">Education</a>
+            <a href="#certification" class="nav-button">Certification</a>
+            <a href="#accomplishment" class="nav-button">Accomplishment</a>
+        </nav>
     </header>
 
     <main>
-      <section id="home" class="page active">
-        <h2>Home</h2>
-        <p>Welcome to my CV! Here's a brief introduction about myself.</p>
-        <p>My name is John Doe, and I'm passionate about web development, design, and continuous learning.</p>
-      </section>
+        <section id="home">
+            <h2>Home</h2>
+            <p>Welcome to my e-ink styled portfolio. Navigate through the sections to learn more.</p>
+        </section>
 
-      <section id="education" class="page">
-        <h2>Education</h2>
-        <ul>
-          <li>B.Sc. in Computer Science, University of Example, 2020</li>
-          <li>M.Sc. in Information Technology, Example Institute, 2022</li>
-        </ul>
-      </section>
+        <section id="education">
+            <h2>Education</h2>
+            <p>Details about my educational background.</p>
+        </section>
 
-      <section id="certification" class="page">
-        <h2>Certification</h2>
-        <ul>
-          <li>Certified Web Developer - Example Academy</li>
-          <li>Advanced JavaScript Certificate - Tech Institute</li>
-        </ul>
-      </section>
+        <section id="certification">
+            <h2>Certifications</h2>
+            <p>My professional certifications and achievements.</p>
+        </section>
 
-      <section id="accomplishment" class="page">
-        <h2>Accomplishment</h2>
-        <ul>
-          <li>Developed a portfolio website with 10k monthly visits.</li>
-          <li>Contributed to open-source projects with 500+ stars.</li>
-        </ul>
-      </section>
+        <section id="accomplishment">
+            <h2>Accomplishments</h2>
+            <p>Highlights of my notable accomplishments.</p>
+        </section>
     </main>
-  </div>
 
-  <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2024 My E-Ink Portfolio</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
