@@ -3,44 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Ink CV</title>
+    <title>E-Ink Themed Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>E-Ink Portfolio</h1>
+        <h1>E-Ink Themed Portfolio</h1>
         <nav>
-            <a href="#home" class="nav-button">Home</a>
-            <a href="#education" class="nav-button">Education</a>
-            <a href="#certification" class="nav-button">Certification</a>
-            <a href="#accomplishment" class="nav-button">Accomplishment</a>
+            <ul>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#certification" class="nav-link">Certification</a></li>
+                <li><a href="#accomplishment" class="nav-link">Accomplishment</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
-        <section id="home">
+        <section id="home" class="section active">
             <h2>Home</h2>
-            <p>Welcome to my e-ink styled portfolio. Navigate through the sections to learn more.</p>
+            <p>Welcome to my e-ink themed portfolio page.</p>
         </section>
 
-        <section id="education">
+        <section id="education" class="section">
             <h2>Education</h2>
             <p>Details about my educational background.</p>
         </section>
 
-        <section id="certification">
-            <h2>Certifications</h2>
-            <p>My professional certifications and achievements.</p>
+        <section id="certification" class="section">
+            <h2>Certification</h2>
+            <p>Details about my certifications.</p>
         </section>
 
-        <section id="accomplishment">
+        <section id="accomplishment" class="section">
             <h2>Accomplishments</h2>
-            <p>Highlights of my notable accomplishments.</p>
+            <p>Details about my accomplishments.</p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 My E-Ink Portfolio</p>
+        <p>&copy; 2024 E-Ink Themed Portfolio</p>
     </footer>
 
     <script src="script.js"></script>
