@@ -1,17 +1,19 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const buttons = document.querySelectorAll(".nav-button");
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
 
-    buttons.forEach(button => {
-        button.addEventListener("click", (e) => {
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetSection = document.querySelector(button.getAttribute("href"));
-            
-            // Add refresh effect
-            document.body.style.opacity = "0";
-            setTimeout(() => {
-                document.body.style.opacity = "1";
-                targetSection.scrollIntoView({ behavior: "smooth" });
-            }, 300); // Simulates e-ink refresh delay
+
+            // Remove 'active' class from all nav links
+            navLinks.forEach(nav => nav.classList.remove('active'));
+            link.classList.add('active');
+
+            // Hide all sections and show the selected section
+            const targetSection = document.querySelector(link.getAttribute('href'));
+            sections.forEach(section => section.classList.remove('active'));
+            targetSection.classList.add('active');
         });
     });
 });
