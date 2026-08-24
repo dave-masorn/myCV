@@ -288,7 +288,7 @@ body {
   pointer-events: none;
 }
 
-/* Base Sketch Drawing (Softly underlays color so colors remain vibrant) */
+/* Base Sketch Drawing: Smoothly fades out on hover so color painting shines cleanly */
 .portrait-sketch {
   opacity: 1;
   z-index: 1;
@@ -299,58 +299,26 @@ body {
 }
 
 .cv-portrait:hover .portrait-sketch {
-  opacity: 0.15;
+  opacity: 0;
 }
 
-/* Color Watercolor Painting Multi-Spot Layers */
+/* Color Watercolor Painting: Smoothly blooms across the artwork without overlapping artifacts */
 .portrait-color {
   opacity: 0;
   z-index: 2;
   mix-blend-mode: multiply;
-  filter: saturate(0.8) blur(1.5px);
+  filter: saturate(0.85) blur(1.5px);
+  clip-path: circle(0% at 50% 36%);
+  transition: opacity 2.0s cubic-bezier(0.25, 1, 0.5, 1),
+              clip-path 2.4s cubic-bezier(0.25, 1, 0.5, 1),
+              filter 2.2s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: opacity, clip-path, filter;
 }
 
-/* Spot 1: Face & Eyes Blossom */
-.portrait-color.spot-1 {
-  clip-path: circle(0% at 50% 32%);
-  transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0s,
-              clip-path 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0s,
-              filter 2.2s cubic-bezier(0.25, 1, 0.5, 1) 0s;
-}
-
-/* Spot 2: Shirt & Chest Blossom */
-.portrait-color.spot-2 {
-  clip-path: circle(0% at 38% 65%);
-  transition: opacity 2.0s cubic-bezier(0.25, 1, 0.5, 1) 0.12s,
-              clip-path 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
-              filter 2.2s cubic-bezier(0.25, 1, 0.5, 1) 0.12s;
-}
-
-/* Spot 3: Shoulder & Arm Blossom */
-.portrait-color.spot-3 {
-  clip-path: circle(0% at 72% 52%);
-  transition: opacity 2.2s cubic-bezier(0.25, 1, 0.5, 1) 0.22s,
-              clip-path 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.22s,
-              filter 2.4s cubic-bezier(0.25, 1, 0.5, 1) 0.22s;
-}
-
-/* On hover: all paint spots bloom and expand across the canvas */
 .cv-portrait:hover .portrait-color {
   opacity: 1;
-  filter: saturate(1.05) blur(0px);
-}
-
-.cv-portrait:hover .portrait-color.spot-1 {
-  clip-path: circle(120% at 50% 32%);
-}
-
-.cv-portrait:hover .portrait-color.spot-2 {
-  clip-path: circle(120% at 38% 65%);
-}
-
-.cv-portrait:hover .portrait-color.spot-3 {
-  clip-path: circle(120% at 72% 52%);
+  filter: saturate(1) blur(0px);
+  clip-path: circle(140% at 50% 36%);
 }
 
 /* ==========================================================================
