@@ -302,26 +302,72 @@ body {
   opacity: 0;
 }
 
-/* Color Watercolor Painting (Fluid continuous paint reveal, zero-flicker forward & reverse) */
+/* Color Watercolor Painting (Multi-spot blossom reveal with zero-flicker SVG mask) */
 .portrait-color {
   opacity: 0;
   z-index: 2;
   mix-blend-mode: multiply;
-  filter: saturate(0.7) blur(2px);
-  clip-path: circle(0% at 50% 36%);
-  transform: scale(0.98);
-  transition: opacity 2.0s cubic-bezier(0.25, 1, 0.5, 1),
-              clip-path 2.4s cubic-bezier(0.25, 1, 0.5, 1),
-              filter 2.2s cubic-bezier(0.25, 1, 0.5, 1),
-              transform 2.2s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: opacity, clip-path, filter, transform;
+  filter: saturate(0.75) blur(1.5px);
+  mask: url(#paint-blossom-mask);
+  -webkit-mask: url(#paint-blossom-mask);
+  transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1),
+              filter 2.2s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, filter;
 }
 
 .cv-portrait:hover .portrait-color {
   opacity: 1;
   filter: saturate(1.05) blur(0px);
-  clip-path: circle(150% at 50% 36%);
-  transform: scale(1);
+}
+
+/* SVG Paint Spots Staggered Radius Transitions */
+.paint-spot {
+  transition: r 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.paint-spot.spot-face {
+  transition-duration: 2.0s;
+}
+
+.paint-spot.spot-hair {
+  transition-duration: 2.3s;
+  transition-delay: 0.12s;
+}
+
+.paint-spot.spot-chest {
+  transition-duration: 2.4s;
+  transition-delay: 0.08s;
+}
+
+.paint-spot.spot-shoulder {
+  transition-duration: 2.6s;
+  transition-delay: 0.18s;
+}
+
+.paint-spot.spot-arm {
+  transition-duration: 2.5s;
+  transition-delay: 0.22s;
+}
+
+/* On hover: all paint blossom spots bloom outward across the portrait */
+.cv-portrait:hover .paint-spot.spot-face {
+  r: 0.65;
+}
+
+.cv-portrait:hover .paint-spot.spot-hair {
+  r: 0.55;
+}
+
+.cv-portrait:hover .paint-spot.spot-chest {
+  r: 0.62;
+}
+
+.cv-portrait:hover .paint-spot.spot-shoulder {
+  r: 0.58;
+}
+
+.cv-portrait:hover .paint-spot.spot-arm {
+  r: 0.64;
 }
 
 /* ==========================================================================

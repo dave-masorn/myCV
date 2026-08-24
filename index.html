@@ -15,13 +15,28 @@
 </head>
 <body>
 
-  <!-- Hand-Drawn Sketch Drawing Line Filter -->
+  <!-- Hand-Drawn Sketch Drawing Line Filter & Multi-Spot Paint Blossom Mask -->
   <svg width="0" height="0" style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
     <defs>
       <filter id="ink-stroke" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
         <feTurbulence type="fractalNoise" baseFrequency="0.035 0.035" numOctaves="4" result="noise" />
         <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6" xChannelSelector="R" yChannelSelector="G" />
       </filter>
+
+      <!-- Multi-Spot Paint Blossom Mask -->
+      <mask id="paint-blossom-mask" maskContentUnits="objectBoundingBox">
+        <rect width="1" height="1" fill="black" />
+        <!-- Spot 1: Face / Eyes -->
+        <circle class="paint-spot spot-face" cx="0.50" cy="0.32" r="0" fill="white" />
+        <!-- Spot 2: Hair / Forehead -->
+        <circle class="paint-spot spot-hair" cx="0.60" cy="0.18" r="0" fill="white" />
+        <!-- Spot 3: Shirt / Chest -->
+        <circle class="paint-spot spot-chest" cx="0.40" cy="0.64" r="0" fill="white" />
+        <!-- Spot 4: Right Shoulder -->
+        <circle class="paint-spot spot-shoulder" cx="0.76" cy="0.54" r="0" fill="white" />
+        <!-- Spot 5: Arm / Foreground -->
+        <circle class="paint-spot spot-arm" cx="0.46" cy="0.86" r="0" fill="white" />
+      </mask>
     </defs>
   </svg>
 
@@ -137,7 +152,7 @@
   <footer class="system-footer">
     <div class="footer-inner">
       <div class="footer-left">
-        <span class="footer-text">Update: <span id="lastUpdateTime">25-Aug-26; 00:36:44</span>
+        <span class="footer-text">Update: <span id="lastUpdateTime">25-Aug-26; 00:38:14</span>
       </div>
       <div class="footer-right">
         <span class="footer-text">&copy; Dave Masorn 2026</span>
