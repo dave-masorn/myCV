@@ -273,14 +273,14 @@ body {
   height: 30.1em;
   z-index: 1;
   user-select: none;
-  cursor: pointer;
+  pointer-events: none; /* Hovering over image does nothing */
 }
 
 .portrait-svg-canvas {
   width: 100%;
   height: 100%;
   display: block;
-  pointer-events: auto;
+  pointer-events: none;
   mix-blend-mode: multiply;
 }
 
@@ -292,7 +292,8 @@ body {
   will-change: opacity;
 }
 
-.cv-portrait:hover .svg-img-sketch {
+.cv-card:hover ~ .cv-portrait .svg-img-sketch,
+.cv-stage:has(.cv-card:hover) .svg-img-sketch {
   opacity: 0;
 }
 
@@ -338,28 +339,34 @@ body {
   transition-delay: 0.14s;
 }
 
-/* On hover: all 6 spots bloom outward across the entire portrait */
-.cv-portrait:hover .paint-dab.dab-face {
+/* On hover over Content Box (.cv-card): all 6 spots bloom outward across the portrait */
+.cv-card:hover ~ .cv-portrait .paint-dab.dab-face,
+.cv-stage:has(.cv-card:hover) .paint-dab.dab-face {
   r: 450;
 }
 
-.cv-portrait:hover .paint-dab.dab-plant {
+.cv-card:hover ~ .cv-portrait .paint-dab.dab-plant,
+.cv-stage:has(.cv-card:hover) .paint-dab.dab-plant {
   r: 420;
 }
 
-.cv-portrait:hover .paint-dab.dab-shirt {
+.cv-card:hover ~ .cv-portrait .paint-dab.dab-shirt,
+.cv-stage:has(.cv-card:hover) .paint-dab.dab-shirt {
   r: 480;
 }
 
-.cv-portrait:hover .paint-dab.dab-hair {
+.cv-card:hover ~ .cv-portrait .paint-dab.dab-hair,
+.cv-stage:has(.cv-card:hover) .paint-dab.dab-hair {
   r: 420;
 }
 
-.cv-portrait:hover .paint-dab.dab-shoulder {
+.cv-card:hover ~ .cv-portrait .paint-dab.dab-shoulder,
+.cv-stage:has(.cv-card:hover) .paint-dab.dab-shoulder {
   r: 450;
 }
 
-.cv-portrait:hover .paint-dab.dab-arm {
+.cv-card:hover ~ .cv-portrait .paint-dab.dab-arm,
+.cv-stage:has(.cv-card:hover) .paint-dab.dab-arm {
   r: 460;
 }
 
