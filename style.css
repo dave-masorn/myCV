@@ -702,7 +702,7 @@ body {
    7. Cross-Device Responsive Layouts (Mobile Phones & Tablets)
    ========================================================================== */
 
-@media screen and (max-width: 900px), screen and (max-height: 540px) and (orientation: landscape) {
+@media screen and (max-width: 960px), screen and (orientation: portrait), screen and (max-height: 580px) and (orientation: landscape) {
   html, body {
     overflow-x: hidden;
     overflow-y: auto;
