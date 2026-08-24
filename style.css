@@ -360,11 +360,21 @@ body {
 /* Folder Item */
 .folder-item {
   position: relative;
+  min-width: 5.4em;
 }
 
 .folder-icon-box {
   width: 3.6em;
   height: 2.8em;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.folder-item:hover .folder-icon-box {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.folder-item:active .folder-icon-box {
+  transform: translateY(0) scale(0.98);
 }
 
 .folder-icon-box .dock-svg {
@@ -383,8 +393,7 @@ body {
   transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.folder-item:hover .folder-label,
-.desktop-dock.is-open .folder-label {
+.folder-item:hover .folder-label {
   opacity: 1;
   transform: translateY(0);
 }
@@ -393,16 +402,17 @@ body {
 .pdf-item {
   opacity: 0;
   max-width: 0;
+  min-width: 0;
   padding-left: 0;
   padding-right: 0;
   margin-left: 0;
   transform: translateX(-14px) scale(0.9);
   pointer-events: none;
   visibility: hidden;
-  gap: 0.28em;
   transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
               max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              min-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
               margin-left 0.32s cubic-bezier(0.16, 1, 0.3, 1),
               padding 0.32s cubic-bezier(0.16, 1, 0.3, 1),
               visibility 0.32s cubic-bezier(0.16, 1, 0.3, 1);
@@ -412,6 +422,7 @@ body {
 .desktop-dock.is-open .pdf-item {
   opacity: 1;
   max-width: 8.5em;
+  min-width: 5.4em;
   margin-left: 0.6em;
   padding-left: 0.75em;
   padding-right: 0.75em;
@@ -422,7 +433,19 @@ body {
 
 .pdf-icon-box {
   width: 2.2em;
-  height: 2.5em;
+  height: 2.8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pdf-item:hover .pdf-icon-box {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.pdf-item:active .pdf-icon-box {
+  transform: translateY(0) scale(0.98);
 }
 
 .pdf-icon-box .dock-svg {
@@ -430,9 +453,20 @@ body {
   height: 100%;
 }
 
+/* PDF Label: Hidden by default, smoothly revealed on hover (same as folder) */
 .pdf-label {
+  margin-top: 0.3em;
   font-size: 0.72em;
   font-weight: 500;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pdf-item:hover .pdf-label {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ==========================================================================
