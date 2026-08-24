@@ -292,7 +292,7 @@ body {
 
 .desktop-dock {
   position: absolute;
-  left: 1.5em;
+  left: 0;
   top: 34.6em;
   display: flex;
   align-items: flex-start;
@@ -437,7 +437,7 @@ body {
 }
 
 /* ==========================================================================
-   5. Bottom System Status Bar Footer
+   5. Bottom System Status Bar Footer (Aligned with stage boundaries)
    ========================================================================== */
 
 .system-footer {
@@ -448,15 +448,22 @@ body {
   height: 2.2em;
   background-color: var(--bg-footer);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0 2.5em;
-  font-family: var(--font-mono);
-  font-size: 0.72em;
-  color: var(--color-footer-text);
   border-top: 1px solid rgba(0, 0, 0, 0.04);
   user-select: none;
   z-index: 100;
+}
+
+.footer-inner {
+  width: 63em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72em;
+  color: var(--color-footer-text);
 }
 
 .footer-text {
