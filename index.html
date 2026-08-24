@@ -6,12 +6,13 @@
   <title>Dave Masorn — CV</title>
   <meta name="description" content="Curriculum Vitae of Dave Masorn (Abhinut Srimasorn)">
   
-  <!-- Google Fonts: Caveat (Handwriting), Geist (Sans-serif), Noto Sans Thai -->
+  <!-- Google Fonts: Caveat (Signature), Geist (Sans-serif), Geist Mono (Code/UI), Noto Sans Thai -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geist:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
   <!-- Subtle Organic Ink Texture Filter -->
@@ -23,6 +24,15 @@
       </filter>
     </defs>
   </svg>
+
+  <!-- Top Island Capsule (3 Dots) -->
+  <header class="top-island-wrapper">
+    <div class="top-island" title="System Menu">
+      <span class="island-dot"></span>
+      <span class="island-dot"></span>
+      <span class="island-dot"></span>
+    </div>
+  </header>
 
   <main class="page-wrapper">
     <div class="cv-stage">
@@ -89,20 +99,42 @@
         />
       </div>
 
-    </div>
+      <!-- Bottom-Left Desktop Dock (Folder & PDF File) -->
+      <div class="desktop-dock" id="desktopDock">
+        
+        <!-- Folder Item -->
+        <button class="dock-item folder-item" id="folderBtn" aria-label="Open dave_masorn folder" title="Click to open folder">
+          <div class="icon-box folder-icon-box">
+            <img src="assets/folder-svgrepo-com.svg" alt="Folder Icon" class="dock-svg">
+          </div>
+          <span class="item-label folder-label">dave_masorn</span>
+        </button>
 
-    <!-- Quick Action Button (Print / Export) -->
-    <aside class="action-bar" aria-label="Page Actions">
-      <button class="action-btn" onclick="window.print()" title="Print or Save as PDF">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 6 2 18 2 18 9"></polyline>
-          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-          <rect x="6" y="14" width="12" height="8"></rect>
-        </svg>
-        <span>Print</span>
-      </button>
-    </aside>
+        <!-- PDF File Item (Revealed on folder click) -->
+        <button class="dock-item pdf-item" id="pdfBtn" aria-label="Open dave_cv.pdf" title="Click to open / print CV PDF">
+          <div class="pdf-card-container">
+            <div class="icon-box pdf-icon-box">
+              <img src="assets/pdf-svgrepo-com.svg" alt="PDF Icon" class="dock-svg">
+            </div>
+            <span class="item-label pdf-label">dave_cv.pdf</span>
+          </div>
+        </button>
+
+      </div>
+
+    </div>
   </main>
 
+  <!-- Bottom System Status Bar -->
+  <footer class="system-footer">
+    <div class="footer-left">
+      <span class="footer-text">Update: 24-Aug-26; 21:38:15</span>
+    </div>
+    <div class="footer-right">
+      <span class="footer-text">&copy; Dave Masorn 2026</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

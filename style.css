@@ -1,22 +1,27 @@
 /* ==========================================================================
-   Dave Masorn — CV Style Sheet (Professional Editorial Scale)
-   Refined typography, balanced sizing, non-scrollable viewport fit.
+   Dave Masorn — CV Style Sheet (Desktop Editorial with System Dock & Footer)
+   Geist & Geist Mono typography, interactive folder/PDF dock, ink textures.
    ========================================================================== */
 
 :root {
   --bg-page: #f1f2ed;
   --bg-card: #f7f7f5;
+  --bg-pdf-card: #d6ede8;
+  --bg-footer: #e4e5df;
+  --bg-island: #e3e4de;
   --color-ink: #181818;
   --color-ink-muted: #2c2c2c;
+  --color-footer-text: #666662;
   --border-width: 1.5px;
   
   --font-signature: 'Caveat', cursive, system-ui;
   --font-heading: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist', monospace;
   --font-thai: 'Noto Sans Thai', 'Thonburi', 'Geist', sans-serif;
 
-  /* Refined, professional scale: comfortable reading size with elegant viewport margins */
-  --font-scale: clamp(11.5px, min(1.18vw, 2.05vh), 15.5px);
+  /* Fluid non-scrollable scale */
+  --font-scale: clamp(10.5px, min(1.12vw, 1.88vh), 14.5px);
 }
 
 /* Reset & Viewport Lock */
@@ -46,29 +51,73 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  position: relative;
 }
 
-/* Page Wrapper — Centered with generous breathing room */
-.page-wrapper {
+/* ==========================================================================
+   Top Island Capsule (Dynamic 3-Dots Pill)
+   ========================================================================== */
+
+.top-island-wrapper {
+  position: fixed;
+  top: 1.2em;
+  left: 0;
   width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 150;
+  pointer-events: none;
+}
+
+.top-island {
+  background-color: var(--bg-island);
+  border-radius: 9999px;
+  padding: 0.45em 1.1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  pointer-events: auto;
+  cursor: default;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.top-island:hover {
+  background-color: #dcddd6;
+  transform: translateY(-1px);
+}
+
+.island-dot {
+  width: 0.32em;
+  height: 0.32em;
+  border-radius: 50%;
+  background-color: #1e1e1e;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   Main Page Wrapper & Centered Canvas Stage
+   ========================================================================== */
+
+.page-wrapper {
+  flex: 1 1 auto;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2em;
+  padding: 2.5em 2em 3em;
   position: relative;
   overflow: hidden;
 }
 
-/* Coordinate Stage: Elegant 63em x 34em canvas (shifted up for optical balance) */
+/* Coordinate Stage: 63em x 40em with optical upward shift */
 .cv-stage {
   width: 63em;
-  height: 34em;
+  height: 40.5em;
   position: relative;
   flex-shrink: 0;
-  transform: translateY(-3.2em);
+  transform: translateY(-2.2em);
 }
 
 /* 1. Signature Header "Dave Masorn" */
@@ -237,50 +286,181 @@ body {
   -webkit-user-drag: none;
 }
 
-/* Minimal Quick Action Button (Print / PDF) */
-.action-bar {
-  position: fixed;
-  bottom: 1.2em;
-  right: 1.4em;
-  z-index: 100;
+/* ==========================================================================
+   4. Desktop Folder & PDF File Dock
+   ========================================================================== */
+
+.desktop-dock {
+  position: absolute;
+  left: 1.5em;
+  top: 34.6em;
+  display: flex;
+  align-items: flex-start;
+  z-index: 20;
 }
 
-.action-btn {
-  background-color: var(--color-ink);
-  color: #ffffff;
+/* Generic Dock Item (Button reset) */
+.dock-item {
+  background: none;
   border: none;
-  border-radius: 9999px;
-  padding: 0.5em 1em;
-  font-family: var(--font-body);
-  font-size: 0.76em;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
+  padding: 0;
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-mono);
+  outline: none;
+}
+
+/* Icon Wrap */
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dock-svg {
+  display: block;
   user-select: none;
+  -webkit-user-drag: none;
 }
 
-.action-btn:hover {
-  background-color: #333333;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+.item-label {
+  font-family: var(--font-mono);
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
-.action-btn:active {
+/* Folder Item */
+.folder-item {
+  position: relative;
+  width: 5.2em;
+}
+
+.folder-icon-box {
+  width: 3.8em;
+  height: 3.0em;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.folder-item:hover .folder-icon-box {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.folder-item:active .folder-icon-box {
+  transform: translateY(0) scale(0.98);
+}
+
+.folder-icon-box .dock-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Folder Label: Hidden by default, smoothly revealed on hover */
+.folder-label {
+  margin-top: 0.35em;
+  font-size: 0.72em;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.folder-item:hover .folder-label,
+.desktop-dock.is-open .folder-label {
+  opacity: 1;
   transform: translateY(0);
 }
 
+/* PDF File Item: Revealed ONLY when folder is clicked */
+.pdf-item {
+  opacity: 0;
+  max-width: 0;
+  margin-left: 0;
+  transform: translateX(-14px) scale(0.9);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              max-width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-left 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Active / Open state for PDF Item */
+.desktop-dock.is-open .pdf-item {
+  opacity: 1;
+  max-width: 7.2em;
+  margin-left: 1.2em;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* PDF Rounded Card Container */
+.pdf-card-container {
+  background-color: var(--bg-pdf-card);
+  border-radius: 0.75em;
+  padding: 0.45em 0.85em 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.28em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.pdf-item:hover .pdf-card-container {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.pdf-item:active .pdf-card-container {
+  transform: translateY(0);
+}
+
+.pdf-icon-box {
+  width: 2.2em;
+  height: 2.5em;
+}
+
+.pdf-icon-box .dock-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pdf-label {
+  font-size: 0.72em;
+  font-weight: 500;
+}
+
 /* ==========================================================================
-   Portrait & Compact Screens Adaptation
+   5. Bottom System Status Bar Footer
    ========================================================================== */
 
-@media (max-aspect-ratio: 1.1/1) {
-  :root {
-    --font-scale: clamp(9px, min(1.45vw, 1.6vh), 13px);
-  }
+.system-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.2em;
+  background-color: var(--bg-footer);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.5em;
+  font-family: var(--font-mono);
+  font-size: 0.72em;
+  color: var(--color-footer-text);
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  user-select: none;
+  z-index: 100;
+}
+
+.footer-text {
+  letter-spacing: -0.01em;
 }
 
 /* ==========================================================================
@@ -299,23 +479,21 @@ body {
     font-size: 11pt !important;
   }
 
+  .top-island-wrapper,
+  .desktop-dock,
+  .system-footer {
+    display: none !important;
+  }
+
   .page-wrapper {
     padding: 0 !important;
     height: 100% !important;
     display: flex !important;
   }
 
-  .cv-card {
-    border: 1.5pt solid #000000 !important;
+  .cv-card::before {
     box-shadow: none !important;
     background-color: #ffffff !important;
   }
-
-  .action-bar {
-    display: none !important;
-  }
-
-  .branch-line {
-    background-color: #000000 !important;
-  }
 }
+EOF
