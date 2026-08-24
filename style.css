@@ -507,6 +507,129 @@ body {
 }
 
 /* ==========================================================================
+   6. PDF Preview Overlay Modal (Matching Mockup with Download Button)
+   ========================================================================== */
+
+.pdf-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(228, 229, 223, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5em;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pdf-modal-backdrop.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.pdf-modal-card {
+  width: 63em;
+  height: min(85vh, 46em);
+  background-color: #ffffff;
+  border-radius: 1.8em;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95) translateY(12px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pdf-modal-backdrop.is-visible .pdf-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.pdf-modal-header {
+  position: absolute;
+  top: 1.2em;
+  right: 1.5em;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.modal-download-btn {
+  background-color: #1e1e1e;
+  width: 2.6em;
+  height: 2.6em;
+  border-radius: 0.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+}
+
+.modal-download-btn:hover {
+  background-color: #333333;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.modal-download-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.download-icon {
+  width: 1.45em;
+  height: 1.45em;
+  display: block;
+}
+
+.modal-close-btn {
+  background-color: rgba(0, 0, 0, 0.06);
+  color: #1a1a1a;
+  border: none;
+  width: 2.2em;
+  height: 2.2em;
+  border-radius: 50%;
+  font-size: 1.3em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+  transform: scale(1.06);
+}
+
+.modal-close-btn:active {
+  transform: scale(0.96);
+}
+
+.pdf-modal-body {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.pdf-viewer-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ==========================================================================
    Print Stylesheet (For PDF Export & Physical Printing)
    ========================================================================== */
 

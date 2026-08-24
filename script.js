@@ -62,11 +62,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Open / Print CV PDF on click
+  // PDF Modal Elements & Handlers
+  const pdfModal = document.getElementById('pdfModal');
+  const closePdfModal = document.getElementById('closePdfModal');
+
+  function openPdfModal() {
+    if (pdfModal) {
+      pdfModal.classList.add('is-visible');
+      pdfModal.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  function closePdfModalFn() {
+    if (pdfModal) {
+      pdfModal.classList.remove('is-visible');
+      pdfModal.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  // Open PDF Modal on PDF item click
   if (pdfBtn) {
     pdfBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      window.print();
+      openPdfModal();
     });
   }
+
+  // Close PDF Modal on close button click
+  if (closePdfModal) {
+    closePdfModal.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closePdfModalFn();
+    });
+  }
+
+  // Close PDF Modal on clicking backdrop
+  if (pdfModal) {
+    pdfModal.addEventListener('click', (e) => {
+      if (e.target === pdfModal) {
+        closePdfModalFn();
+      }
+    });
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && pdfModal && pdfModal.classList.contains('is-visible')) {
+      closePdfModalFn();
+    }
+  });
 });
