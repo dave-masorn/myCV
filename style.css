@@ -286,6 +286,7 @@ body {
   user-select: none;
   -webkit-user-drag: none;
   pointer-events: none;
+  mix-blend-mode: multiply;
 }
 
 .portrait-sketch {
