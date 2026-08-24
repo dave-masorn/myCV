@@ -88,22 +88,45 @@
 
       </div>
 
-      <!-- Right Portrait Image (Adjacent & Overlapping Card Right Edge) -->
+      <!-- Right Portrait Image (Multi-Spot Watercolor Paint Reveal) -->
       <div class="cv-portrait">
-        <img 
-          src="assets/dave-portrait.png" 
-          alt="Dave Masorn Sketch Portrait" 
-          class="portrait-img portrait-sketch"
-          loading="eager"
-          decoding="sync"
-        />
-        <img 
-          src="assets/dave-portrait-color.png" 
-          alt="Dave Masorn Color Portrait" 
-          class="portrait-img portrait-color"
-          loading="eager"
-          decoding="sync"
-        />
+        <svg class="portrait-svg-canvas" viewBox="0 0 726 1155" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-label="Dave Masorn Portrait">
+          <defs>
+            <!-- Multi-Spot Paint Blossom Mask (6 Independent Bloom Centers) -->
+            <mask id="multi-spot-mask">
+              <rect width="726" height="1155" fill="black" />
+              <!-- Spot 1: Face / Eyes -->
+              <circle class="paint-dab dab-face" cx="380" cy="380" r="0" fill="white" />
+              <!-- Spot 2: Hair & Forehead -->
+              <circle class="paint-dab dab-hair" cx="440" cy="210" r="0" fill="white" />
+              <!-- Spot 3: Green Plant Leaves (Top Left) -->
+              <circle class="paint-dab dab-plant" cx="210" cy="420" r="0" fill="white" />
+              <!-- Spot 4: Shirt / Chest -->
+              <circle class="paint-dab dab-shirt" cx="360" cy="720" r="0" fill="white" />
+              <!-- Spot 5: Right Shoulder -->
+              <circle class="paint-dab dab-shoulder" cx="560" cy="620" r="0" fill="white" />
+              <!-- Spot 6: Arm & Hand (Bottom Left) -->
+              <circle class="paint-dab dab-arm" cx="290" cy="940" r="0" fill="white" />
+            </mask>
+          </defs>
+
+          <!-- Base Sketch Artwork -->
+          <image 
+            href="assets/dave-portrait.png" 
+            width="726" 
+            height="1155" 
+            class="svg-img-sketch"
+          />
+
+          <!-- Color Artwork Masked by Multi-Spot Blossoms -->
+          <image 
+            href="assets/dave-portrait-color.png" 
+            width="726" 
+            height="1155" 
+            mask="url(#multi-spot-mask)"
+            class="svg-img-color"
+          />
+        </svg>
       </div>
 
       <!-- Bottom-Left Desktop Dock (Folder & PDF File) -->
@@ -137,7 +160,7 @@
   <footer class="system-footer">
     <div class="footer-inner">
       <div class="footer-left">
-        <span class="footer-text">Update: <span id="lastUpdateTime">25-Aug-26; 00:40:53</span>
+        <span class="footer-text">Update: <span id="lastUpdateTime">25-Aug-26; 00:44:05</span>
       </div>
       <div class="footer-right">
         <span class="footer-text">&copy; Dave Masorn 2026</span>

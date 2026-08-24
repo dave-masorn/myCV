@@ -264,7 +264,7 @@ body {
   letter-spacing: 0.01em;
 }
 
-/* 3. Right Portrait (With Multi-Spot Watercolor Painting Reveal) */
+/* 3. Right Portrait (With Multi-Spot Watercolor Painting Reveal Canvas) */
 .cv-portrait {
   position: absolute;
   left: 44.2em;
@@ -276,49 +276,91 @@ body {
   cursor: pointer;
 }
 
-.portrait-img {
-  position: absolute;
-  inset: 0;
+.portrait-svg-canvas {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: bottom left;
-  user-select: none;
-  -webkit-user-drag: none;
-  pointer-events: none;
+  display: block;
+  pointer-events: auto;
+  mix-blend-mode: multiply;
 }
 
-/* Base Sketch Drawing: Smoothly fades out on hover so color painting shines cleanly */
-.portrait-sketch {
+/* Base Sketch Image Layer inside SVG */
+.svg-img-sketch {
   opacity: 1;
-  z-index: 1;
-  mix-blend-mode: multiply;
   filter: contrast(1.05) brightness(0.98);
   transition: opacity 2.2s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: opacity;
 }
 
-.cv-portrait:hover .portrait-sketch {
+.cv-portrait:hover .svg-img-sketch {
   opacity: 0;
 }
 
-/* Color Watercolor Painting: Smoothly blooms across the artwork without overlapping artifacts */
-.portrait-color {
-  opacity: 0;
-  z-index: 2;
-  mix-blend-mode: multiply;
-  filter: saturate(0.85) blur(1.5px);
-  clip-path: circle(0% at 50% 36%);
-  transition: opacity 2.0s cubic-bezier(0.25, 1, 0.5, 1),
-              clip-path 2.4s cubic-bezier(0.25, 1, 0.5, 1),
-              filter 2.2s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: opacity, clip-path, filter;
-}
-
-.cv-portrait:hover .portrait-color {
+/* Color Image Layer inside SVG */
+.svg-img-color {
   opacity: 1;
-  filter: saturate(1) blur(0px);
-  clip-path: circle(140% at 50% 36%);
+  filter: saturate(1.04) contrast(1.02);
+}
+
+/* 6 Multi-Spot Paint Blossom Dabs with Staggered Transitions */
+.paint-dab {
+  transition: r 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: r;
+}
+
+.dab-face {
+  transition-duration: 2.0s;
+  transition-delay: 0s;
+}
+
+.dab-plant {
+  transition-duration: 2.4s;
+  transition-delay: 0.1s;
+}
+
+.dab-shirt {
+  transition-duration: 2.5s;
+  transition-delay: 0.08s;
+}
+
+.dab-hair {
+  transition-duration: 2.4s;
+  transition-delay: 0.16s;
+}
+
+.dab-shoulder {
+  transition-duration: 2.6s;
+  transition-delay: 0.2s;
+}
+
+.dab-arm {
+  transition-duration: 2.5s;
+  transition-delay: 0.14s;
+}
+
+/* On hover: all 6 spots bloom outward across the entire portrait */
+.cv-portrait:hover .paint-dab.dab-face {
+  r: 450;
+}
+
+.cv-portrait:hover .paint-dab.dab-plant {
+  r: 420;
+}
+
+.cv-portrait:hover .paint-dab.dab-shirt {
+  r: 480;
+}
+
+.cv-portrait:hover .paint-dab.dab-hair {
+  r: 420;
+}
+
+.cv-portrait:hover .paint-dab.dab-shoulder {
+  r: 450;
+}
+
+.cv-portrait:hover .paint-dab.dab-arm {
+  r: 460;
 }
 
 /* ==========================================================================
