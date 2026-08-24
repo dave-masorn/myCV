@@ -699,6 +699,216 @@ body {
 }
 
 /* ==========================================================================
+   7. Cross-Device Responsive Layouts (Mobile Phones & Tablets)
+   ========================================================================== */
+
+@media screen and (max-width: 900px), screen and (max-height: 540px) and (orientation: landscape) {
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    font-size: 15px;
+  }
+
+  .top-island-wrapper {
+    position: sticky;
+    top: 0.8rem;
+    padding-top: 0.2rem;
+  }
+
+  .page-wrapper {
+    padding: 2.2rem 1rem 6rem;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: visible;
+  }
+
+  .cv-stage {
+    width: 100%;
+    max-width: 28rem;
+    height: auto;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    gap: 0;
+  }
+
+  /* Signature Title on Mobile */
+  .signature-title {
+    position: static;
+    font-size: 2.3rem;
+    margin-bottom: 0.6rem;
+    padding-left: 0.3rem;
+    text-align: left;
+    width: 100%;
+    transform: none;
+  }
+
+  /* Main Content Card on Mobile */
+  .cv-card {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    padding: 1.8rem 1.2rem 1.8rem 1.5rem;
+    border-radius: 1.4rem;
+    margin-bottom: 1.2rem;
+    z-index: 2;
+  }
+
+  .cv-card::before {
+    border-radius: 1.4rem;
+  }
+
+  /* Sections inside Card on Mobile */
+  .cv-section {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin-bottom: 1.3rem;
+  }
+
+  .cv-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .section-heading-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: auto;
+    margin-bottom: 0.5rem;
+  }
+
+  .branch-line {
+    position: absolute;
+    left: -1.5rem;
+    top: 50%;
+    width: 1.5rem;
+    height: 1.5px;
+  }
+
+  .section-title {
+    position: static;
+    font-size: 1.15rem;
+    font-weight: 800;
+  }
+
+  .section-list {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .section-list li {
+    font-size: 0.88rem;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.45;
+  }
+
+  /* Portrait Artwork on Mobile */
+  .cv-portrait {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(82vw, 17rem);
+    height: 22rem;
+    margin: 0.5rem auto 1.2rem;
+    pointer-events: auto;
+    z-index: 1;
+  }
+
+  .portrait-svg-canvas {
+    pointer-events: auto;
+  }
+
+  /* Tap on mobile portrait or card triggers watercolor animation */
+  .cv-portrait:active .svg-img-sketch,
+  .cv-portrait:hover .svg-img-sketch,
+  .cv-card:active ~ .cv-portrait .svg-img-sketch {
+    opacity: 0;
+  }
+
+  .cv-portrait:active .paint-dab.dab-face,
+  .cv-portrait:hover .paint-dab.dab-face,
+  .cv-card:active ~ .cv-portrait .paint-dab.dab-face {
+    r: 450;
+  }
+
+  .cv-portrait:active .paint-dab.dab-plant,
+  .cv-portrait:hover .paint-dab.dab-plant,
+  .cv-card:active ~ .cv-portrait .paint-dab.dab-plant {
+    r: 420;
+  }
+
+  .cv-portrait:active .paint-dab.dab-shirt,
+  .cv-portrait:hover .paint-dab.dab-shirt,
+  .cv-card:active ~ .cv-portrait .paint-dab.dab-shirt {
+    r: 480;
+  }
+
+  .cv-portrait:active .paint-dab.dab-hair,
+  .cv-portrait:hover .paint-dab.dab-hair,
+  .cv-card:active ~ .cv-portrait .paint-dab.dab-hair {
+    r: 420;
+  }
+
+  .cv-portrait:active .paint-dab.dab-shoulder,
+  .cv-portrait:hover .paint-dab.dab-shoulder,
+  .cv-card:active ~ .cv-portrait .paint-dab.dab-shoulder {
+    r: 450;
+  }
+
+  .cv-portrait:active .paint-dab.dab-arm,
+  .cv-portrait:hover .paint-dab.dab-arm,
+  .cv-card:active ~ .cv-portrait .paint-dab.dab-arm {
+    r: 460;
+  }
+
+  /* Bottom Desktop Dock on Mobile */
+  .desktop-dock {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    justify-content: center;
+    margin: 0.5rem 0 1rem;
+  }
+
+  /* Bottom System Status Bar on Mobile */
+  .system-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3.5rem;
+  }
+
+  .footer-inner {
+    width: 100%;
+    padding: 0 1.2rem;
+    font-size: 0.72rem;
+  }
+
+  .pdf-modal-card {
+    width: 94vw;
+    height: 85vh;
+    border-radius: 1.2rem;
+  }
+}
+
+/* ==========================================================================
    Print Stylesheet (For PDF Export & Physical Printing)
    ========================================================================== */
 
@@ -732,4 +942,3 @@ body {
     background-color: #ffffff !important;
   }
 }
-EOF
