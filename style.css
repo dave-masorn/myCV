@@ -422,8 +422,8 @@ body {
 /* Active / Open state for PDF Item */
 .desktop-dock.is-open .pdf-item {
   opacity: 1;
-  max-width: 8.5em;
-  min-width: 5.4em;
+  max-width: 14.5em;
+  min-width: 7.2em;
   margin-left: 0.6em;
   padding-left: 0.75em;
   padding-right: 0.75em;
