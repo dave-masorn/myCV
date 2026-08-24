@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Dave Masorn — CV</title>
+  <meta name="description" content="Curriculum Vitae of Dave Masorn (Abhinut Srimasorn)">
+  
+  <!-- Google Fonts: Caveat (Handwriting), Geist (Sans-serif), Noto Sans Thai -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geist:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="page-wrapper">
+    <div class="cv-stage">
+      
+      <!-- Top Title (Caveat font) -->
+      <h1 class="signature-title">Dave Masorn</h1>
+
+      <!-- Main Rounded Box (Card) -->
+      <div class="cv-card">
+        
+        <!-- Section: Bio -->
+        <section class="cv-section section-bio">
+          <div class="section-heading-row">
+            <span class="branch-line" aria-hidden="true"></span>
+            <h2 class="section-title">Bio.</h2>
+          </div>
+          <ul class="section-list">
+            <li><span class="bullet">-</span> <span class="text"><strong>Name:</strong> Abhinut Srimasorn</span></li>
+            <li><span class="bullet">-</span> <span class="text"><strong>Name (TH):</strong> <span class="thai-text">อภินัทธ์ ศรีมาสอน</span></span></li>
+            <li><span class="bullet">-</span> <span class="text"><strong>Nat.:</strong> Thai</span></li>
+            <li><span class="bullet">-</span> <span class="text"><strong>DOB:</strong> 11-Sep-90</span></li>
+            <li><span class="bullet">-</span> <span class="text"><strong>Lang.:</strong> Thai, English, Japanese</span></li>
+            <li><span class="bullet">-</span> <span class="text"><strong>Skills:</strong> Qualitative Research, Computer Programming, AI for webapp dev.</span></li>
+          </ul>
+        </section>
+
+        <!-- Section: Interests -->
+        <section class="cv-section section-interests">
+          <div class="section-heading-row">
+            <span class="branch-line" aria-hidden="true"></span>
+            <h2 class="section-title">Interests</h2>
+          </div>
+          <ul class="section-list">
+            <li><span class="bullet">-</span> <span class="text">International Political Sociology (IPS)</span></li>
+            <li><span class="bullet">-</span> <span class="text">Computational Intelligence and System Science (CISS)</span></li>
+            <li><span class="bullet">-</span> <span class="text">Edutainment Development (edTECH)</span></li>
+          </ul>
+        </section>
+
+        <!-- Section: Education -->
+        <section class="cv-section section-education">
+          <div class="section-heading-row">
+            <span class="branch-line" aria-hidden="true"></span>
+            <h2 class="section-title">Education</h2>
+          </div>
+          <ul class="section-list">
+            <li><span class="bullet">-</span> <span class="text">Grad.Dip.Dev.Pol., KDI School, Korea</span></li>
+            <li><span class="bullet">-</span> <span class="text">MBA, AIT, Thailand</span></li>
+            <li><span class="bullet">-</span> <span class="text">YSEP, CISS, Tokyo Tech, Japan</span></li>
+            <li><span class="bullet">-</span> <span class="text">B.Sc. IT, SIIT, Thammasat Univ., Thailand</span></li>
+          </ul>
+        </section>
+
+      </div>
+
+      <!-- Right Portrait Image (Adjacent & Overlapping Card Right Edge) -->
+      <div class="cv-portrait">
+        <img 
+          src="assets/portrait.png" 
+          alt="Dave Masorn Sketch Portrait" 
+          class="portrait-img"
+          loading="eager"
+          decoding="sync"
+        />
+      </div>
+
+    </div>
+
+    <!-- Quick Action Button (Print / Export) -->
+    <aside class="action-bar" aria-label="Page Actions">
+      <button class="action-btn" onclick="window.print()" title="Print or Save as PDF">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <span>Print</span>
+      </button>
+    </aside>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+/* ==========================================================================
+   Dave Masorn — CV Style Sheet (Professional Editorial Scale)
+   Refined typography, balanced sizing, non-scrollable viewport fit.
+   ========================================================================== */
+
+:root {
+  --bg-page: #f1f2ed;
+  --bg-card: #f7f7f5;
+  --color-ink: #181818;
+  --color-ink-muted: #2c2c2c;
+  --border-width: 1.5px;
+  
+  --font-signature: 'Caveat', cursive, system-ui;
+  --font-heading: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-thai: 'Noto Sans Thai', 'Thonburi', 'Geist', sans-serif;
+
+  /* Refined, professional scale: comfortable reading size with elegant viewport margins */
+  --font-scale: clamp(11.5px, min(1.18vw, 2.05vh), 15.5px);
+}
+
+/* Reset & Viewport Lock */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-scale);
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Fully non-scrollable */
+}
+
+body {
+  width: 100vw;
+  width: 100dvw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden; /* Guaranteed no scroll */
+  background-color: var(--bg-page);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Page Wrapper — Centered with generous breathing room */
+.page-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Coordinate Stage: Elegant 63em x 34em canvas (shifted up for optical balance) */
+.cv-stage {
+  width: 63em;
+  height: 34em;
+  position: relative;
+  flex-shrink: 0;
+  transform: translateY(-1.6em);
+}
+
+/* 1. Signature Header "Dave Masorn" */
+.signature-title {
+  position: absolute;
+  left: 3.4em;
+  top: 0.15em;
+  font-family: var(--font-signature);
+  font-size: 2.1em;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-ink);
+  letter-spacing: 0.02em;
+  transform: rotate(-0.5deg);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* 2. Main Rounded Card Box */
+.cv-card {
+  position: absolute;
+  left: 0;
+  top: 3.3em;
+  width: 44.5em;
+  height: 30.2em;
+  background-color: var(--bg-card);
+  border: var(--border-width) solid var(--color-ink);
+  border-radius: 1.8em;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  z-index: 2;
+}
+
+/* Sections inside Card */
+.cv-section {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.section-bio {
+  top: 1.9em;
+}
+
+.section-interests {
+  top: 13.6em;
+}
+
+.section-education {
+  top: 20.7em;
+}
+
+/* Heading Row (Branch Line + Section Title) */
+.section-heading-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 1.5em;
+}
+
+/* Branch Line connecting Left Border to Title */
+.branch-line {
+  position: absolute;
+  left: calc(-1 * var(--border-width));
+  top: calc(50% - var(--border-width) / 2);
+  width: 2.7em;
+  height: var(--border-width);
+  background-color: var(--color-ink);
+  pointer-events: none;
+}
+
+/* Section Title */
+.section-title {
+  position: absolute;
+  left: 3.15em;
+  font-family: var(--font-heading);
+  font-size: 1.22em;
+  font-weight: 800;
+  color: var(--color-ink);
+  letter-spacing: -0.015em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.section-education .section-title {
+  font-size: 1.18em;
+}
+
+/* Section List */
+.section-list {
+  list-style: none;
+  position: absolute;
+  left: 3.7em;
+  top: 1.75em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22em;
+}
+
+.section-list li {
+  font-size: 0.88em;
+  font-weight: 500;
+  line-height: 1.52;
+  color: var(--color-ink-muted);
+  display: flex;
+  align-items: baseline;
+  gap: 0.45em;
+  white-space: nowrap;
+}
+
+.section-list .bullet {
+  font-weight: 600;
+  color: var(--color-ink);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.section-list .text {
+  user-select: text;
+}
+
+.section-list strong {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.thai-text {
+  font-family: var(--font-thai);
+  font-size: 1.02em;
+  letter-spacing: 0.01em;
+}
+
+/* 3. Right Portrait (Behind Card Border) */
+.cv-portrait {
+  position: absolute;
+  left: 44.2em;
+  top: 3.4em;
+  width: 18.8em;
+  height: 30.1em;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom left;
+  filter: contrast(1.02) brightness(0.99);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Minimal Quick Action Button (Print / PDF) */
+.action-bar {
+  position: fixed;
+  bottom: 1.2em;
+  right: 1.4em;
+  z-index: 100;
+}
+
+.action-btn {
+  background-color: var(--color-ink);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.5em 1em;
+  font-family: var(--font-body);
+  font-size: 0.76em;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+}
+
+.action-btn:hover {
+  background-color: #333333;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Portrait & Compact Screens Adaptation
+   ========================================================================== */
+
+@media (max-aspect-ratio: 1.1/1) {
+  :root {
+    --font-scale: clamp(9px, min(1.45vw, 1.6vh), 13px);
+  }
+}
+
+/* ==========================================================================
+   Print Stylesheet (For PDF Export & Physical Printing)
+   ========================================================================== */
+
+@media print {
+  @page {
+    size: landscape;
+    margin: 0.5cm;
+  }
+
+  html, body {
+    background-color: #ffffff !important;
+    overflow: visible !important;
+    font-size: 11pt !important;
+  }
+
+  .page-wrapper {
+    padding: 0 !important;
+    height: 100% !important;
+    display: flex !important;
+  }
+
+  .cv-card {
+    border: 1.5pt solid #000000 !important;
+    box-shadow: none !important;
+    background-color: #ffffff !important;
+  }
+
+  .action-bar {
+    display: none !important;
+  }
+
+  .branch-line {
+    background-color: #000000 !important;
+  }
+}
