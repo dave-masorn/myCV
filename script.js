@@ -105,10 +105,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && pdfModal && pdfModal.classList.contains('is-visible')) {
-      closePdfModalFn();
+  // Live GitHub Commit Timestamp Formatter & Updater
+  function formatCommitDate(dateObj) {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const month = months[dateObj.getMonth()];
+    const year = String(dateObj.getFullYear()).slice(-2);
+    const hours = String(dateObj.getHours()).padStart(2, '0');
+    const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+    const seconds = String(dateObj.getSeconds()).padStart(2, '0');
+    return `${day}-${month}-${year}; ${hours}:${minutes}:${seconds}`;
+  }
+
+  async function updateCommitTimestamp() {
+    const updateEl = document.getElementById('lastUpdateTime');
+    if (!updateEl) return;
+
+    // Use cached timestamp if present
+    const cached = localStorage.getItem('cv_last_commit_timestamp');
+    if (cached) {
+      updateEl.textContent = cached;
     }
-  });
+
+    try {
+      const res = await fetch('https://api.github.com/repos/dave-masorn/myCV/commits?per_page=1', {
+        headers: { 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (res.ok) {
+        const commits = await res.json();
+        if (commits && commits.length > 0 && commits[0].commit && commits[0].commit.committer) {
+          const date = new Date(commits[0].commit.committer.date);
+          const formatted = formatCommitDate(date);
+          updateEl.textContent = formatted;
+          localStorage.setItem('cv_last_commit_timestamp', formatted);
+        }
+      }
+    } catch (err) {
+      console.warn('Could not fetch latest commit timestamp:', err);
+    }
+  }
+
+  updateCommitTimestamp();
 });
