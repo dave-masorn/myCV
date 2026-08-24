@@ -292,14 +292,16 @@ body {
 .portrait-sketch {
   opacity: 1;
   z-index: 1;
-  filter: contrast(1.02) brightness(0.99);
+  mix-blend-mode: multiply;
+  filter: contrast(1.05) brightness(0.98);
 }
 
 .portrait-color {
   opacity: 0;
   z-index: 2;
+  mix-blend-mode: multiply;
   /* Watercolor color-paint blossom & bleed reveal */
-  filter: saturate(0.7) blur(1.5px);
+  filter: saturate(0.75) contrast(1.02) blur(1.5px);
   clip-path: circle(0% at 50% 36%);
   transition: opacity 2.2s cubic-bezier(0.22, 1, 0.36, 1),
               clip-path 2.5s cubic-bezier(0.22, 1, 0.36, 1),
@@ -309,7 +311,7 @@ body {
 
 .cv-portrait:hover .portrait-color {
   opacity: 1;
-  filter: saturate(1) blur(0px);
+  filter: saturate(1.05) contrast(1.02) blur(0px);
   clip-path: circle(150% at 50% 36%);
 }
 
