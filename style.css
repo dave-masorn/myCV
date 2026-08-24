@@ -507,20 +507,20 @@ body {
 }
 
 /* ==========================================================================
-   6. PDF Preview Overlay Modal (Matching Mockup with Download Button)
+   6. PDF Preview Overlay Modal (Enlarged Responsive Viewer)
    ========================================================================== */
 
 .pdf-modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(228, 229, 223, 0.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(228, 229, 223, 0.76);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 300;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5em;
+  padding: 1.2em;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -534,16 +534,16 @@ body {
 }
 
 .pdf-modal-card {
-  width: 63em;
-  height: min(85vh, 46em);
+  width: min(95vw, 76em);
+  height: min(92vh, 56em);
   background-color: #ffffff;
-  border-radius: 1.8em;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.04);
+  border-radius: 1.6em;
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.18), 0 2px 12px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transform: scale(0.95) translateY(12px);
+  transform: scale(0.96) translateY(12px);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -553,49 +553,19 @@ body {
 
 .pdf-modal-header {
   position: absolute;
-  top: 1.2em;
-  right: 1.5em;
+  top: 1.0em;
+  right: 1.2em;
   z-index: 20;
   display: flex;
   align-items: center;
-  gap: 0.6em;
-}
-
-.modal-download-btn {
-  background-color: #1e1e1e;
-  width: 2.6em;
-  height: 2.6em;
-  border-radius: 0.7em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.24);
-  cursor: pointer;
-  text-decoration: none;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
-}
-
-.modal-download-btn:hover {
-  background-color: #333333;
-  transform: translateY(-2px) scale(1.04);
-}
-
-.modal-download-btn:active {
-  transform: translateY(0) scale(0.98);
-}
-
-.download-icon {
-  width: 1.45em;
-  height: 1.45em;
-  display: block;
 }
 
 .modal-close-btn {
-  background-color: rgba(0, 0, 0, 0.06);
-  color: #1a1a1a;
+  background-color: rgba(20, 20, 20, 0.85);
+  color: #ffffff;
   border: none;
-  width: 2.2em;
-  height: 2.2em;
+  width: 2.3em;
+  height: 2.3em;
   border-radius: 50%;
   font-size: 1.3em;
   line-height: 1;
@@ -603,12 +573,13 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-close-btn:hover {
-  background-color: rgba(0, 0, 0, 0.12);
-  transform: scale(1.06);
+  background-color: #000000;
+  transform: scale(1.08);
 }
 
 .modal-close-btn:active {
@@ -619,7 +590,7 @@ body {
   flex: 1 1 auto;
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #525659;
 }
 
 .pdf-viewer-frame {

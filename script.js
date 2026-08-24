@@ -105,22 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Download PDF Button Handler
-  const downloadPdfBtn = document.getElementById('downloadPdfBtn');
-  if (downloadPdfBtn) {
-    downloadPdfBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      // Ensure smooth download without page navigation or print trigger
-      const link = document.createElement('a');
-      link.href = 'assets/AS_CV_2025-FEB.pdf';
-      link.download = 'AS_CV_2025-FEB.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      e.preventDefault();
-    });
-  }
-
   // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && pdfModal && pdfModal.classList.contains('is-visible')) {
