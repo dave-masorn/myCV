@@ -102,6 +102,9 @@
       <!-- Bottom-Left Desktop Dock (Folder & PDF File) -->
       <div class="desktop-dock" id="desktopDock">
         
+        <!-- Sliding Highlight Box (Moveable on hover) -->
+        <div class="dock-highlight" id="dockHighlight"></div>
+
         <!-- Folder Item -->
         <button class="dock-item folder-item" id="folderBtn" aria-label="Open dave_masorn folder" title="Click to open folder">
           <div class="icon-box folder-icon-box">
@@ -112,12 +115,10 @@
 
         <!-- PDF File Item (Revealed on folder click) -->
         <button class="dock-item pdf-item" id="pdfBtn" aria-label="Open dave_cv.pdf" title="Click to open / print CV PDF">
-          <div class="pdf-card-container">
-            <div class="icon-box pdf-icon-box">
-              <img src="assets/pdf-svgrepo-com.svg" alt="PDF Icon" class="dock-svg">
-            </div>
-            <span class="item-label pdf-label">dave_cv.pdf</span>
+          <div class="icon-box pdf-icon-box">
+            <img src="assets/pdf-svgrepo-com.svg" alt="PDF Icon" class="dock-svg">
           </div>
+          <span class="item-label pdf-label">dave_cv.pdf</span>
         </button>
 
       </div>
