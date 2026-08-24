@@ -288,7 +288,7 @@ body {
   pointer-events: none;
 }
 
-/* Base Sketch Drawing (Smoothly fades to transparent as color applies so final look is bright & clean) */
+/* Base Sketch Drawing (Softly underlays color so colors remain vibrant) */
 .portrait-sketch {
   opacity: 1;
   z-index: 1;
@@ -299,75 +299,58 @@ body {
 }
 
 .cv-portrait:hover .portrait-sketch {
-  opacity: 0;
+  opacity: 0.15;
 }
 
-/* Color Watercolor Painting (Multi-spot blossom reveal with zero-flicker SVG mask) */
+/* Color Watercolor Painting Multi-Spot Layers */
 .portrait-color {
   opacity: 0;
   z-index: 2;
   mix-blend-mode: multiply;
-  filter: saturate(0.75) blur(1.5px);
-  mask: url(#paint-blossom-mask);
-  -webkit-mask: url(#paint-blossom-mask);
-  transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1),
-              filter 2.2s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: opacity, filter;
+  filter: saturate(0.8) blur(1.5px);
+  will-change: opacity, clip-path, filter;
 }
 
+/* Spot 1: Face & Eyes Blossom */
+.portrait-color.spot-1 {
+  clip-path: circle(0% at 50% 32%);
+  transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0s,
+              clip-path 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0s,
+              filter 2.2s cubic-bezier(0.25, 1, 0.5, 1) 0s;
+}
+
+/* Spot 2: Shirt & Chest Blossom */
+.portrait-color.spot-2 {
+  clip-path: circle(0% at 38% 65%);
+  transition: opacity 2.0s cubic-bezier(0.25, 1, 0.5, 1) 0.12s,
+              clip-path 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+              filter 2.2s cubic-bezier(0.25, 1, 0.5, 1) 0.12s;
+}
+
+/* Spot 3: Shoulder & Arm Blossom */
+.portrait-color.spot-3 {
+  clip-path: circle(0% at 72% 52%);
+  transition: opacity 2.2s cubic-bezier(0.25, 1, 0.5, 1) 0.22s,
+              clip-path 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.22s,
+              filter 2.4s cubic-bezier(0.25, 1, 0.5, 1) 0.22s;
+}
+
+/* On hover: all paint spots bloom and expand across the canvas */
 .cv-portrait:hover .portrait-color {
   opacity: 1;
   filter: saturate(1.05) blur(0px);
 }
 
-/* SVG Paint Spots Staggered Radius Transitions */
-.paint-spot {
-  transition: r 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+.cv-portrait:hover .portrait-color.spot-1 {
+  clip-path: circle(120% at 50% 32%);
 }
 
-.paint-spot.spot-face {
-  transition-duration: 2.0s;
+.cv-portrait:hover .portrait-color.spot-2 {
+  clip-path: circle(120% at 38% 65%);
 }
 
-.paint-spot.spot-hair {
-  transition-duration: 2.3s;
-  transition-delay: 0.12s;
-}
-
-.paint-spot.spot-chest {
-  transition-duration: 2.4s;
-  transition-delay: 0.08s;
-}
-
-.paint-spot.spot-shoulder {
-  transition-duration: 2.6s;
-  transition-delay: 0.18s;
-}
-
-.paint-spot.spot-arm {
-  transition-duration: 2.5s;
-  transition-delay: 0.22s;
-}
-
-/* On hover: all paint blossom spots bloom outward across the portrait */
-.cv-portrait:hover .paint-spot.spot-face {
-  r: 0.65;
-}
-
-.cv-portrait:hover .paint-spot.spot-hair {
-  r: 0.55;
-}
-
-.cv-portrait:hover .paint-spot.spot-chest {
-  r: 0.62;
-}
-
-.cv-portrait:hover .paint-spot.spot-shoulder {
-  r: 0.58;
-}
-
-.cv-portrait:hover .paint-spot.spot-arm {
-  r: 0.64;
+.cv-portrait:hover .portrait-color.spot-3 {
+  clip-path: circle(120% at 72% 52%);
 }
 
 /* ==========================================================================
