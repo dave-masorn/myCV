@@ -393,7 +393,8 @@ body {
   transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.folder-item:hover .folder-label {
+.folder-item:hover .folder-label,
+.desktop-dock.is-open .folder-label {
   opacity: 1;
   transform: translateY(0);
 }
