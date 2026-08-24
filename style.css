@@ -68,7 +68,7 @@ body {
   height: 34em;
   position: relative;
   flex-shrink: 0;
-  transform: translateY(-1.6em);
+  transform: translateY(-3.2em);
 }
 
 /* 1. Signature Header "Dave Masorn" */
